@@ -1,0 +1,1009 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>한국인은 밥심</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+      <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+      <link href="https://fonts.googleapis.com/css?family=Noto+Sans+KR" rel="stylesheet">
+      <link href="https://fonts.googleapis.com/css?family=Gothic+A1" rel="stylesheet">
+    <link rel="shortcut icon" href="/static/img/just_get_me_food_logo.png" />
+    <link rel="apple-touch-icon" href="/static/img/just_get_me_food_logo.png" />
+    <style>
+      html,
+      *{margin: 0px; padding: 0px}
+      body {
+        font-family: 'Noto Sans KR', sans-serif;
+        font-weight: 400;
+        height: 100%;
+        min-height: 100%;
+        width: 100%;
+      }
+      .center-container {
+        margin-bottom: 1rem;
+        text-align: center;
+        width: 0 auto;
+      }
+      .subheader {
+        color: #24323d;
+        font-family: 'Gothic A1', sans-serif;
+        font-size: 1.25rem;
+        font-weight: 400;
+        line-height: 1.25;
+      }
+      p {
+        font-size: 0.7rem;
+        text-align: justify;
+      }
+      a {
+        color: #6AAFE6;
+        text-decoration: none;
+      }
+      .pseudolink {
+        color: #6AAFE6;
+        cursor: pointer;
+      }
+      .main-container {
+        display: flex;
+        flex-direction: column;
+        min-height: 100%;
+      }
+      .content {
+        display: flex;
+        flex: 1;
+        flex-direction: column;
+        justify-content: center;
+      }
+      .thumbnail {
+        max-height: 40vh;
+        max-width: 100%;
+      }
+      .yelp-card {
+        font-size: 0.75rem;
+        margin-top: 0.25rem;
+      }
+      .yelp-card-row {
+        padding-left: 0.5rem;
+        padding-right: 0.5rem;
+      }
+      .dots {
+        bottom: 1em;
+        color: white;
+        font-size: 0.5rem;
+        left: 50%;
+        position: absolute;
+        text-align: center;
+        transform: translate(-50%);
+      }
+      .photo {
+        cursor: pointer;
+        margin-top: 0.25rem;
+      }
+      button:not([disabled]) {
+        cursor: pointer;
+      }
+      .btn {
+        font-size: 1.3rem;
+      }
+      .primary-button {
+        background-color: #6AAFE6;
+        border-color: #6AAFE6;
+        border-radius: 10px;
+        border-style: solid;
+        border-width: 16px;
+        color: #e8f4ff;
+        font-weight: 400;
+        text-align: center;
+      }
+
+      .button-hover {
+  text-align: center;
+  cursor: pointer;
+  font-size:24px;
+  margin: 0 auto;
+}
+
+.button-hover {
+  border-radius: 4px;
+  background-color:#6AAFE6;
+  border: none;
+  padding: 20px;
+  width: 200px;
+  transition: all 0.5s;
+}
+
+.button-hover span {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.5s;
+}
+
+.button-hover span:after {
+  content: '»';
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  right: -20px;
+  transition: 0.5s;
+}
+
+.button-hover:hover span {
+  padding-right: 25px;
+}
+
+.button-hover:hover span:after {
+  opacity: 1;
+  right: 0;
+}
+
+.dollar-button-unselected {
+        background-color: #e8f4ff;
+        border-bottom-width: 2px;
+        border-color: #24323d;
+        border-left-width: 4px;
+        border-radius: 10px;
+        border-right-width: 4px;
+        border-style: solid;
+        border-top-width: 2px;
+        color: #24323d;
+        font-weight: 400;
+      }
+      .dollar-button-selected {
+        background-color: #ff9e00;
+        border-bottom-width: 2px;
+        border-color: #24323d;
+        border-left-width: 4px;
+        border-radius: 10px;
+        border-right-width: 4px;
+        border-style: solid;
+        border-top-width: 2px;
+        color: #24323d;
+        font-weight: 400;
+      }
+      .primary-button:disabled {
+        background-color: #748494;
+        border-color: #748494;
+        color: #eef0f2;
+      }
+      .btn:focus {
+        box-shadow: 0 0 0 0 rgba(0, 123, 255, 0);
+        outline: 0;
+        outline-color: transparent;
+        outline-style: none;
+        outline-width: 0;
+      }
+      .circle-buttons {
+        margin-bottom: 0;
+      }
+      .circle-btn {
+        border-radius: 50%;
+        border-style: solid;
+        border-width: 4px;
+        font-size: 2rem;
+        font-weight: 600;
+        height: 4rem;
+        width: 4rem;
+      }
+      .circle-yes {
+        background-color: #8CD790;
+        border-color: #8CD790;
+        color: #e8f4ff;
+      }
+      .circle-no {
+        background-color: #E53A40;
+        border-color: #E53A40;
+        color: #ffe6f4;
+      }
+      .pan {
+        background-color: #e8f4ff;
+        border: 4px solid #24323d;
+        color: #24323d;
+        cursor: default;
+        display: none;
+        left: 50%;
+        opacity: 0.75;
+        position: absolute;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        z-index: 10;
+      }
+      .header {
+        background-color: #6AAFE6;
+        border-bottom: 4px solid #6AAFE6;
+        border-top: 4px solid #6AAFE6;
+        color: #e8f4ff;
+        font-family: 'Gothic A1', sans-serif;
+        font-weight: 700;
+      }
+      .header a {
+        color: #e8f4ff;
+        text-decoration: none;
+      }
+      .footer {
+        color: #24323d;
+        font-size: 0.5rem;
+        padding-bottom: 0.15rem;
+        padding-top: 0.15rem;
+      }
+      .heart {
+        font-size: 0.4rem;
+        vertical-align: middle;
+      }
+      .tutorial {
+        border-color: #24323d;
+        border-style: solid;
+        border-width: 1px;
+        height: auto;
+        margin-bottom: 1em;
+        width: 100%;
+      }
+      body.no-touch .pseudolink:hover,
+      body.touch .pseudolink:active {
+        color: #074b91;
+      }
+      body.no-touch .primary-button:hover:not([disabled]),
+      body.touch .primary-button:active:not([disabled]) {
+        background-color: #074b91;
+        font-weight: 700;
+      }
+      body.no-touch .dollar-button-unselected:hover:not([disabled]),
+      body.no-touch .dollar-button-unselected:active:not([disabled]) {
+        font-weight: 700;
+      }
+      body.no-touch .dollar-button-selected:hover:not([disabled]),
+      body.touch .dollar-button-selected:active:not([disabled]) {
+        font-weight: 700;
+      }
+      body.no-touch .circle-yes:hover,
+      body.touch .circle-yes:active {
+        background-color: #8CD790;
+        font-weight: 700;
+      }
+      body.no-touch .circle-no:hover,
+      body.touch .circle-no:active {
+        background-color: #E53A40;
+        font-weight: 700;
+      }
+      body.no-touch .pan:hover,
+      body.touch .pan:active {
+        background-color: #e8f4ff;
+        color: #24323d;
+        cursor: default;
+      }
+      body.no-touch .header:hover,
+      body.touch .header:active {
+        background-color: #074b91;
+        color: #e8f4ff;
+        font-weight: 900;
+        text-decoration: none;
+      }
+      body.no-touch .header:hover a:hover,
+      body.touch .header:active a:active {
+        color: #e8f4ff;
+      }
+      body.no-touch a:hover,
+      body.touch a:active {
+        color: #074b91;
+        text-decoration: none;
+      }
+      @media (max-width: 359px), (max-height: 615px) {
+        .center-container {
+          width: 85%;
+        }
+        .yelp-card {
+          width: 100%;
+        }
+        html,
+        body {
+          font-size: 22px;
+        }
+        .header {
+          font-size: 1.5rem;
+        }
+      }
+      @media (min-width: 360px) and (min-height: 616px) {
+        .center-container {
+          width: 80%;
+        }
+        .yelp-card {
+          width: 100%;
+        }
+        html,
+        body {
+          font-size: 24px;
+        }
+        .header {
+          font-size: 1.5rem;
+        }
+      }
+      @media (min-width: 432px) and (min-height: 630px) {
+        .center-container {
+          width: 70%;
+        }
+        .yelp-card {
+          width: 100%;
+        }
+        html,
+        body {
+          font-size: 24px;
+        }
+        .header {
+          font-size: 1.75rem;
+        }
+      }
+      @media (min-width: 576px) and (min-height: 696px) {
+        .center-container,
+        .yelp-card {
+          width: 60%;
+        }
+        html,
+        body {
+          font-size: 26px;
+        }
+        .header {
+          font-size: 2rem;
+        }
+      }
+      @media (min-width: 672px) and (min-height: 764px) {
+        .center-container,
+        .yelp-card {
+          width: 60%;
+        }
+        html,
+        body {
+          font-size: 28px;
+        }
+        .header {
+          font-size: 2.2rem;
+        }
+      }
+      @media (min-width: 768px) and (min-height: 832px) {
+        .center-container,
+        .yelp-card {
+          width: 50%;
+        }
+        html,
+        body {
+          font-size: 30px;
+        }
+        .header {
+          font-size: 2.4rem;
+        }
+      }
+      @media (min-width: 992px) and (min-height: 888px) {
+        .center-container,
+        .yelp-card {
+          width: 40%;
+        }
+        html,
+        body {
+          font-size: 32px;
+        }
+        .header {
+          font-size: 2.5rem;
+        }
+      }
+      @media (min-width: 1200px) and (min-height: 890px) {
+        .center-container,
+        .yelp-card {
+          width: 30%;
+        }
+        html,
+        body {
+          font-size: 34px;
+        }
+        .header {
+          font-size: 2.5rem;
+        }
+      }
+    </style>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.9.1/underscore-min.js"></script>
+<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAw-UDSUD5oET2o8r6LySbcnyXBogXiFQ8&libraries=places"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/hammer.js/2.0.8/hammer.min.js"></script>
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=GA_TRACKING_ID"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'GA_TRACKING_ID');
+</script>
+
+  </head>
+
+  <body ontouchstart="">
+    <div class="container col-12 main-container">
+      <div class="header row justify-content-center">
+        <a href="/">한국인은 밥심</a>
+      </div>
+
+      <div class="row align-items-center justify-content-center content"></div>
+
+      <div class="footer row justify-content-center">
+        <div>
+          서울에서 <span class="heart">&#128588;&#127834;</span> 밥심으로 만들어졌습니다.
+          | <a href="/about">더 알아보기</a> |
+          <span class="pseudolink" onclick="showDownload()">다운로드</span>
+        </div>
+      </div>
+    </div>
+  </body>
+
+  <script type="text/javascript">
+    "use strict";
+
+    var csrf_token =
+      "ImI2M2VlNzIwNDBkY2JjZGY1Y2IzOGJlODMxNDNkNWZjNmY3ZGMyZWYi.DutuTA.XJIdF_VSESw6dnki33Gy1_09PsU";
+
+    function showDownload() {
+      $(".content").html(`
+            <p></p>
+            <div class='subheader'>
+                Download
+            </div>f
+            <div class='center-container'>
+                <p>
+                </p>
+                <p>
+                There's no official app, but you can save it to your homescreen like this:
+                </p>
+                <p>
+                1. In Safari, click the <i>save</i> icon at the bottom.
+                </p>
+                <img src='/static/img/tutorial1.gif' class='tutorial'/>
+                <br/>
+                <p>
+                2. In the menu, swipe a little to the right and tap the <i>add to home screen</i> button.
+                </p>
+                <img src='/static/img/tutorial2.gif' class='tutorial'/>
+                <p>
+                3. Tap <i>add</i>.
+                </p>
+                <img src='/static/img/tutorial3.gif' class='tutorial'/>
+                <p>
+                4. Now it's on your home screen!
+                </p>
+                <img src='/static/img/tutorial4.gif' class='tutorial'/>
+            </div>
+        `);
+      // back to top
+      window.scrollTo(0, 0);
+    }
+
+    function is_touch_device() {
+      return "ontouchstart" in window || navigator.maxTouchPoints;
+    }
+
+    $.ajaxSetup({
+      beforeSend: function(xhr, settings) {
+        if (
+          !/^(GET|HEAD|OPTIONS|TRACE)$/i.test(settings.type) &&
+          !this.crossDomain
+        ) {
+          xhr.setRequestHeader("X-CSRFToken", csrf_token);
+        }
+      }
+    });
+
+    Number.prototype.mod = function(n) {
+      return ((this % n) + n) % n;
+    };
+
+    if (is_touch_device()) {
+      $("body").addClass("touch");
+    } else {
+      $("body").addClass("no-touch");
+    }
+
+    var coordinate_pair = {};
+    var geocoding_uuid = "";
+    var meal_type = "";
+    var distance = "";
+    var dollars = new Set();
+    var suggestions;
+    var suggestions_current_index = 0;
+    var photo_current_index = 0;
+
+    var distance_three_minutes = 168;
+    var distance_ten_minutes = 558;
+    var distance_twenty_minutes = 1118;
+
+    // POST SUGGESTIONS
+
+    function tryAgain() {
+      location.reload();
+    }
+
+    function startNavigation() {
+      var suggestion = suggestions[suggestions_current_index];
+      window.location = suggestion.google_maps_link;
+    }
+
+    function eventTargetIsPhoto(ev) {
+      var photo_bounding_rect = document
+        .getElementById("photo-container")
+        .getBoundingClientRect();
+      var sourceY = ev.center.y;
+      return (
+        photo_bounding_rect.bottom > sourceY &&
+        sourceY > photo_bounding_rect.top
+      );
+    }
+
+    var debouncedStartNavigation = _.debounce(
+      function() {
+        startNavigation();
+      },
+      1000,
+      true
+    );
+
+    // GET SUGGESTIONS
+
+    function showFirstSuggestion() {
+      if (suggestions.length === 0) {
+        $(".content").html(`
+                <div class='center-container' style='font-size:1.5rem;'>
+                    검색 결과가 없습니다 &#x1F630;
+                </div>
+                <div class='center-container'>
+                    <button type="button" class="button-hover" onclick="tryAgain()"><span>
+                        &#x21bb; 확인 후 다시 입력해주세요
+                    </button>
+                </div>
+            `);
+      } else {
+        makeYelpCard();
+      }
+    }
+
+    function updatePhoto(increment) {
+      photo_current_index += increment;
+      var next_photo = makePhoto();
+      $(".photo").html(next_photo);
+    }
+
+    var debouncedPrevPhoto = _.debounce(
+      function(ev) {
+        updatePhoto(-1);
+      },
+      250,
+      true
+    );
+
+    var debouncedNextPhoto = _.debounce(
+      function(ev) {
+        updatePhoto(1);
+      },
+      250,
+      true
+    );
+
+    function makePhoto() {
+      var suggestion = suggestions[suggestions_current_index];
+      var photo_index = photo_current_index.mod(suggestion.photos.length);
+      var dots = "";
+      for (let i = 0; i < suggestion.photos.length; i++) {
+        if (photo_index == i) {
+          var circle_type = "fas";
+        } else {
+          var circle_type = "far";
+        }
+        dots = dots + `<i class="${circle_type} fa-circle"></i>`;
+        if (i != suggestion.photos.length - 1) {
+          dots = dots + "&nbsp;&nbsp;&nbsp;";
+        }
+      }
+      return `
+            <div class='col' id='photo-container'>
+                <img src="${suggestion.photos[photo_index]}" class="thumbnail"/>
+                <div class='dots'>
+                    ${dots}
+                </div>
+            </div>
+        `;
+    }
+
+    function nextSuggestion() {
+      photo_current_index = 0;
+      suggestions_current_index = (suggestions_current_index + 1).mod(
+        suggestions.length
+      );
+      makeYelpCard();
+    }
+
+    var debouncedNextSuggestion = _.debounce(
+      function() {
+        nextSuggestion();
+      },
+      500,
+      true
+    );
+
+    function makeYelpCard() {
+      var suggestion = suggestions[suggestions_current_index];
+      var photo = makePhoto();
+      var stars = `<div>
+            <img src="/static/img/stars_${
+              suggestion.rating
+            }.png" style='height:2.5ex;width:auto;'/>
+        </div>`;
+      var tags = [];
+      for (let category of suggestion.categories) {
+        tags.push(category.title);
+      }
+      var phone = "";
+      if (suggestion.phone) {
+        phone = `<div><a href="tel:${
+          suggestion.phone
+        }"><i class="fas fa-phone"></i> Call</a></div>`;
+      }
+
+      $(".content").html(`
+            <div class='center-container yelp-card'>
+                <div>
+                    <div class="row no-gutters text-left yelp-card-row subheader">
+                        ${suggestion.name}
+                    </div>
+                    <div class="row no-gutters text-left yelp-card-row">
+                        <i>${tags.join(", ")}</i>
+                    </div>
+                    <div class="row no-gutters yelp-card-row" style='flex-wrap:nowrap;'>
+                        ${stars}&nbsp;&nbsp;<div style='white-space:nowrap;'>(${
+        suggestion.review_count
+      } reviews)</div>
+                    </div>
+                    <div class="row no-gutters align-items-center photo" onclick='debouncedNextPhoto()'>
+                        ${photo}
+                        <button class='btn circle-btn pan' id='pan-no'><i class="fas fa-times"></i></button>
+                        <button class='btn circle-btn pan' id='pan-yes'><i class="fas fa-walking"></i></button>
+                    </div>
+                    <div class="row no-gutters align-items-center justify-content-center yelp-card-row" style='margin-top:0.25rem;'>
+                        ${phone}<div class='ml-auto'><a href="${
+        suggestion.url
+      }">네이버에서 더 읽어보자</a></div>
+                    </div>
+                </div>
+            </div>
+            <div class='center-container circle-buttons'>
+                <div class='row'>
+                    <div class='col-6'>
+                    <button class='btn circle-btn circle-no' onclick='nextSuggestion()'><i class="fas fa-times"></i></button>
+                    </div>
+                    <div class='col-6'>
+                    <button class='btn circle-btn circle-yes' onclick='startNavigation()'><i class="fas fa-walking"></i></button>
+                    </div>
+                </div>
+            </div>
+        `);
+
+      var content = document.getElementsByClassName("content")[0];
+      var contentHammer = new Hammer(content);
+
+      contentHammer.on("swipeleft", function(ev) {
+        if (eventTargetIsPhoto(ev)) {
+          debouncedPrevPhoto();
+        } else {
+          debouncedNextSuggestion();
+        }
+      });
+      contentHammer.on("swiperight", function(ev) {
+        if (eventTargetIsPhoto(ev)) {
+          debouncedNextPhoto();
+        } else {
+          debouncedStartNavigation();
+        }
+      });
+      contentHammer.on("panleft", function(ev) {
+        if (!eventTargetIsPhoto(ev)) {
+          $("#pan-no").show();
+          $("#pan-yes").hide();
+        }
+      });
+      contentHammer.on("panright", function(ev) {
+        if (!eventTargetIsPhoto(ev)) {
+          $("#pan-yes").show();
+          $("#pan-no").hide();
+        }
+      });
+      contentHammer.on("panend", function() {
+        $(".pan").hide();
+      });
+    }
+
+    function preloadImages() {
+      for (let s of suggestions) {
+        for (let p of s.photos) {
+          let img = new Image();
+          img.src = p;
+        }
+      }
+    }
+
+    function getSuggestions() {
+      showLoadingIndicator(`${meal_type} 찾는중...`);
+      if (!coordinate_pair && !geocoding_uuid) {
+        return setTimeout(getSuggestions, 250);
+      }
+
+      $.post({
+        url: "/api/get-suggestions",
+        contentType: "application/json",
+        data: JSON.stringify({
+          coordinate_pair: coordinate_pair,
+          geocoding_uuid: geocoding_uuid,
+          meal_type: meal_type,
+          distance: distance,
+          dollars: Array.from(dollars)
+        })
+      })
+        .done(function(response) {
+          if (response.error_message) {
+            handleError(response.error_message);
+          }
+          suggestions = response;
+          showFirstSuggestion();
+          preloadImages();
+        })
+        .fail(function(jqXHR) {
+          if (jqXHR.responseJSON) {
+            handleError(jqXHR.responseJSON.error_message);
+          }
+        });
+    }
+
+    // SELECT PRICE
+
+    function toggleDollars(number_of_dollars) {
+      switch (number_of_dollars) {
+        case "1":
+          if (dollars.has(number_of_dollars)) {
+            $("#one-dollar")
+              .addClass("dollar-button-unselected")
+              .removeClass("dollar-button-selected");
+          } else {
+            $("#one-dollar")
+              .addClass("dollar-button-selected")
+              .removeClass("dollar-button-unselected");
+          }
+          break;
+        case "2":
+          if (dollars.has(number_of_dollars)) {
+            $("#two-dollars")
+              .addClass("dollar-button-unselected")
+              .removeClass("dollar-button-selected");
+          } else {
+            $("#two-dollars")
+              .addClass("dollar-button-selected")
+              .removeClass("dollar-button-unselected");
+          }
+          break;
+        case "3":
+          if (dollars.has(number_of_dollars)) {
+            $("#three-dollars")
+              .addClass("dollar-button-unselected")
+              .removeClass("dollar-button-selected");
+          } else {
+            $("#three-dollars")
+              .addClass("dollar-button-selected")
+              .removeClass("dollar-button-unselected");
+          }
+          break;
+        case "4":
+          if (dollars.has(number_of_dollars)) {
+            $("#four-dollars")
+              .addClass("dollar-button-unselected")
+              .removeClass("dollar-button-selected");
+          } else {
+            $("#four-dollars")
+              .addClass("dollar-button-selected")
+              .removeClass("dollar-button-unselected");
+          }
+          break;
+      }
+
+      if (dollars.has(number_of_dollars)) {
+        dollars.delete(number_of_dollars);
+      } else {
+        dollars.add(number_of_dollars);
+      }
+
+      var button_enabled = !!dollars.size;
+      $("#pricing-next").prop("disabled", !button_enabled);
+    }
+
+    function getPricing() {
+      // if there's a manual position entered, save it
+      if ($("#manual_position").length > 0) {
+        var manual_position = $("#manual_position").val();
+        geocodeManualPosition(manual_position);
+      }
+
+      $(".content").html(`
+            <div class='center-container btn-group-vertical'>
+                <button id='one-dollar' type="button" class="btn dollar-button-unselected btn-lg w-100" style='border-top-width:4px;' onclick="toggleDollars('1')"><span>
+                    ₩
+                </span></button>
+                <button id='two-dollars' type="button" class="btn dollar-button-unselected btn-lg w-100" onclick="toggleDollars('2')"><span>
+                    ₩₩
+                </span></button>
+                <button id='three-dollars'type="button" class="btn dollar-button-unselected btn-lg w-100" onclick="toggleDollars('3')"><span>
+                    ₩₩₩
+                </span></button>
+                <button id='four-dollars' type="button" class="btn dollar-button-unselected btn-lg w-100" style='border-bottom-width:4px;' onclick="toggleDollars('4')"><span>
+                    ₩₩₩₩
+                </span></button>
+            </div>
+            <div class='center-container'>
+                <button id='pricing-next' type="button" class="button-hover" onclick="getSuggestions()" disabled><span>
+                    다음
+                </span></button>
+            </div>
+        `);
+    }
+
+    // GET LOCATION
+
+    function geocodeManualPosition(address) {
+      geocoding_uuid = "";
+      showLoadingIndicator("Geocoding...");
+      $.post({
+        url: "/api/geocode-address",
+        contentType: "application/json",
+        data: JSON.stringify({
+          address: address
+        })
+      }).done(function(response) {
+        geocoding_uuid = response.geocoding_uuid;
+      });
+    }
+
+    function getLocation() {
+      showLoadingIndicator("현재 위치를 찾고 있습니다...");
+
+      if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(
+          showPosition,
+          getManualPosition
+        );
+      } else {
+        handleLocationError();
+      }
+    }
+
+    function showPosition(position) {
+      coordinate_pair.latitude = position.coords.latitude;
+      coordinate_pair.longitude = position.coords.longitude;
+      getPricing();
+    }
+
+    function getManualPosition() {
+      $(".content").html(`
+            <div class='center-container'>
+                위치를 사용할 수 없습니다. 주소를 입력해 주세요:
+            </div>
+            <div class='center-container'>
+                <input id="manual_position" class="w-100" type="text"/>
+            </div>
+            <div class='center-container'>
+                <button id='position-next' type="button" class="button-hover" onclick="getPricing()" disabled><span>
+                    다음
+                </span></button>
+            </div>
+        `);
+      var input = document.getElementById("manual_position");
+      var autocomplete = new google.maps.places.Autocomplete(input);
+
+      $("#manual_position").on("keyup", function(event) {
+        let enable_button = $("#manual_position").val().length > 0;
+        $("#position-next").prop("disabled", !enable_button);
+        if (event.which == 13 && enable_button) {
+          getPricing();
+        }
+      });
+    }
+
+    // SELECT DISTANCE
+
+    function getDistance() {
+      $(".content").html(`
+            <div class='center-container'>
+                도보
+            </div>
+            <div class='center-container'>
+                <button type="button" class="button-hover" onclick="toggleDistance(${distance_three_minutes})"><span>
+                    3분 거리
+                </span></button>
+            </div>
+            <div class='center-container'>
+                <button type="button" class="button-hover" onclick="toggleDistance(${distance_ten_minutes})"><span>
+                    10분 거리
+                </span></button>
+            </div>
+            <div class='center-container'>
+                <button type="button" class="button-hover" onclick="toggleDistance(${distance_twenty_minutes})"><span>
+                    20분 거리
+                </span></button>
+            </div>
+        `);
+    }
+
+    function toggleDistance(selection) {
+      distance = selection;
+      getLocation();
+    }
+
+    // SELECT MEAL TYPE
+
+    function toggleMealType(selection) {
+      meal_type = selection;
+      getDistance();
+    }
+
+    function getMealType() {
+      $(".content").html(`
+            <div class='center-container'>
+            &nbsp;
+            </div>
+            <div class='center-container'>
+                <button type="button" class="button-hover" onclick="toggleMealType('카페')"><span>
+                    <i class="fas fa-coffee"></i> 카페
+                </span></button>
+            </div>
+            <div class='center-container'>
+                <button type="button" class="button-hover" onclick="toggleMealType('레스토랑')"><span>
+                    <i class="fas fa-utensils"></i> 레스토랑
+                </span></button>
+            </div>
+            <div class='center-container'>
+                <button type="button" class="button-hover" onclick="toggleMealType('술집')"><span>
+                    <i class="fas fa-beer"></i> 술집
+                </span></button>
+            </div>
+        `);
+    }
+
+    // SETUP
+
+    function handleError(error_message) {
+      if (error_message) {
+        $(".content").html(`
+                <div class='center-container'>
+                    ${error_message}
+                </div>
+            `);
+      } else {
+        $(".content").html(`
+                <div class='center-container'>
+                    배고픈데..
+                </div>
+            `);
+      }
+    }
+
+    function showLoadingIndicator(loading_message) {
+      $(".content").html(`
+            <div class='center-container'>
+                <img src="https://cdnjs.cloudflare.com/ajax/libs/timelinejs/2.25/css/loading.gif"/>
+                <br/>
+                ${loading_message}
+            </div>
+        `);
+    }
+
+    $(document).ready(function() {
+      //coordinate_pair = { latitude: 37.780414199999996, longitude: -122.4047039 }
+      //meal_type = 'restaurants'
+      //distance = 558
+      //getSuggestions();
+      getMealType();
+    });
+  </script>
+</html>
